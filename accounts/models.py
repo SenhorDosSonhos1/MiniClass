@@ -7,7 +7,7 @@ ROLE_CHOICES = [
     ('A', 'Aluno')
 ]
 class Profile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, verbose_name='Usuario')
     role = models.CharField(
         max_length=1,
         choices=ROLE_CHOICES,
