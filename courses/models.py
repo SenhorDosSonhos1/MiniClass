@@ -1,5 +1,8 @@
 from django.db import models
 from django.conf import settings
+
+from django.db.models.constraints import CheckConstraint, UniqueConstraint
+from django.db.models import Q, F
 # Create your models here.
 
 class Course(models.Model):
@@ -12,3 +15,19 @@ class Course(models.Model):
 
     def __str__(self):
         return f"Curso: {self.name} - Professor: {self.teacher}"
+    
+class Enrollment(models.Model):
+    student = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    course = models.ForeignKey(Course, on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+    
+    class Meta:
+        constraints = [
+           UniqueConstraint(
+               fields=['student', 'course'], name="unique_enrollment"
+            )
+        ]
+
+
+    def __str__(self):
+        return f"Aluno: {self.student} - Curso: {self.course}"
