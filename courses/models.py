@@ -1,8 +1,7 @@
 from django.db import models
 from django.conf import settings
 
-from django.db.models.constraints import CheckConstraint, UniqueConstraint
-from django.db.models import Q, F
+from django.db.models.constraints import UniqueConstraint
 # Create your models here.
 
 class Course(models.Model):
