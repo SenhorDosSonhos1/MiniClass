@@ -1,0 +1,12 @@
+{% for course in courses %}
+    <h1>Curso: {{course.name}}</h1>
+    <h3>Professor: {{course.teacher}}</h3>
+    <p>Descrição: {{course.description}}</p>
+
+    <small>Criado em: {{course.created_at}}</small>
+    <h2>Lições: </h2>
+
+    {% for lesson in lessons %}
+        <a href="#">{{lesson.order}}. {{lesson.title}}</a>
+    {% endfor %}
+{% endfor %}

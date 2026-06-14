@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from accounts.models import Profile
-from courses.models import Course, Enrollment
+from courses.models import Course, Enrollment, Lesson
 
 # Create your views here.
 def join_course(request):
@@ -22,3 +22,19 @@ def join_course(request):
             return HttpResponse('Código errado ou curso não existente')    
         
     return redirect('join_course')
+
+def my_courses(request):
+    if request.method == "GET":
+        courses = Enrollment.objects.filter(student = request.user)
+        return render(request, "courses/my_courses.html", 
+                      context = {
+                          "courses": courses
+        })
+    
+def my_courses_detail(request, course_id):
+    courses = Enrollment.objects.filter(course = course_id)
+    lesson = Lesson.objects.filter(course = course_id)
+    return render(request, 'courses/my_course_detail.html', context={
+        "courses": courses,
+        "lessons": lesson
+    })
