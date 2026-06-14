@@ -30,3 +30,14 @@ class Enrollment(models.Model):
 
     def __str__(self):
         return f"Aluno: {self.student} - Curso: {self.course}"
+
+class Lesson(models.Model):
+    title = models.CharField(max_length=100)
+    content = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    order = models.IntegerField(blank=True, null=True)
+    course = models.ForeignKey(Course, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"Lição: {self.title} - Curso: {self.course}"
