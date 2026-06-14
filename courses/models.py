@@ -41,3 +41,29 @@ class Lesson(models.Model):
 
     def __str__(self):
         return f"Lição: {self.title} - Curso: {self.course}"
+    
+class Exercise(models.Model):
+    title = models.CharField(max_length=255)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    lesson = models.ForeignKey(Lesson, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"Exercicio: {self.title} - Tema: {self.lesson}"
+    
+class Submission(models.Model):
+    exercise = models.ForeignKey(Exercise, on_delete=models.CASCADE)
+    student = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    content = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        constraints = [
+            UniqueConstraint(
+                fields=["exercise", "student"], name="unique_submission"
+            )
+        ]
+    
+    def __str__(self):
+        return f"Exercicio: {self.exercise} - Aluno: {self.student}"
