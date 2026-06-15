@@ -61,4 +61,4 @@ Praticar conceitos de:
 
 **Marcelo Costa**
 
-Estudante de Análise e Desenvolvimento de Sistemas com foco em Python, Django e Desenvolvimento Backend.
+Estudante de Engenharia de Software com foco em Python, Django e Desenvolvimento Backend.
