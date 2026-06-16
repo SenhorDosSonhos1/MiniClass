@@ -1,5 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import get_object_or_404
 from accounts.models import Profile
 from courses.models import Course, Enrollment, Lesson
 
@@ -23,18 +25,37 @@ def join_course(request):
         
     return redirect('join_course')
 
+#Listar todos os cursos que o aluno fez matricula
+@login_required(login_url="user_login")
 def my_courses(request):
-    if request.method == "GET":
-        courses = Enrollment.objects.filter(student = request.user)
+    if request.method == "GET": 
+        enrollment = Enrollment.objects.filter(student = request.user)
+
         return render(request, "courses/my_courses.html", 
-                      context = {
-                          "courses": courses
+                        context = {
+                            "courses": enrollment
         })
-    
+        
+    return redirect("user_login")
+# Detalhar o curso do aluno matriculado 
+# E listar as lições do curso
+@login_required(login_url="user_login") 
 def my_courses_detail(request, course_id):
-    courses = Enrollment.objects.filter(course = course_id)
-    lesson = Lesson.objects.filter(course = course_id)
-    return render(request, 'courses/my_course_detail.html', context={
-        "courses": courses,
-        "lessons": lesson
-    })
+    enrollment = Enrollment.objects.filter(course = course_id)
+    try:
+    # Verificar se o usuario logado for == ao usuario matriculado
+        if Enrollment.objects.get(
+                student = request.user,
+                course = course_id
+            ):
+        
+            lesson = Lesson.objects.filter(course = course_id)
+
+            return render(request, 'courses/my_course_detail.html', context={
+                "courses": enrollment,
+                "lessons": lesson
+            })
+        
+    except Enrollment.DoesNotExist:
+        return redirect("/gg/")
+    
