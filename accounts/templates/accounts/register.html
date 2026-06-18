@@ -1,0 +1,39 @@
+Hello World
+
+<h1>Registre-se </h1>
+<br>
+
+<form action="" method="POST">
+    {% csrf_token %}
+
+    <label for="" >Username: </label>
+    <input type="text" name="username">
+    <br>
+
+    <label for="" >Email: </label>
+    <input type="email" name="email">
+    <br>
+
+    <label for="" >Senha: </label>
+    <input type="password" name="password">
+   <br>
+   
+    <label for="" >Confirmar senha: </label>
+    <input type="password" name="confirm_pass">
+    <br>
+    <br>
+
+
+    <label for="">Função: </label>
+    <br>
+
+   <select name="profile" id="">
+        <option value="A">Aluno</option>
+        <option value="P">Professor</option>
+   </select>
+
+    <br>
+    <br>
+    <button type="submit">Registrar</button>
+
+</form>
