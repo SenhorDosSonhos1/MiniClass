@@ -1,3 +1,20 @@
+<br>
+
+    <br>
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert {{message.tags}}">
+                    {{message}}
+                </div>
+            {% endfor %}}
+        {% endif %}
+    <br>
+    <br>
+    <br>
+    <h1>Informe o código do curso: </h1>
+    <br>
+    <br>
+    
 <form action="{% url 'join_course' %}" method="POST"> 
     {% csrf_token %}
     <h2>Insira do código do curso: </h2>

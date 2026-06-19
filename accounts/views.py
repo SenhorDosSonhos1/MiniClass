@@ -4,6 +4,7 @@ from django.http import HttpResponse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from accounts.models import Profile
+from django.contrib import messages
 
 def user_login(request):
     if request.method == "GET":
@@ -15,7 +16,8 @@ def user_login(request):
     user = authenticate(username = username, password = password)
 
     if user is None:
-        return HttpResponse("Usuario inválido")
+        messages.warning(request, "O campos estão inválidos ou o usuario não existe!")
+        return redirect("user_login")
     
     login(request, user)
     return redirect("my_courses")
@@ -31,9 +33,10 @@ def user_register(request):
     role = request.POST.get("profile")
 
     if password != confirm_pass:
-        return HttpResponse("Senhas não coincidem")
+        messages.warning(request, "As senhas não coincidem!")
+        return redirect("user_register")
     
-    if not User.objects.filter(username = username).exists():
+    if not User.objects.filter(username = username ).exists():
         
         user = User.objects.create_user(username=username, email=email, password=password)
         profile = Profile.objects.get(user = user)
@@ -41,8 +44,9 @@ def user_register(request):
         profile.save()
 
         return redirect("user_login")
-
-    return HttpResponse("Usuario já existente")
+    
+    messages.warning(request, "O nome de usuario já está em uso.")
+    return redirect("user_register")
 
 def user_logout(request):
     logout(request)

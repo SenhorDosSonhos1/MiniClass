@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404
 from accounts.models import Profile
 from courses.models import Course, Enrollment, Lesson
+from django.contrib import messages
 
 # Create your views here.
 def join_course(request):
@@ -18,10 +19,14 @@ def join_course(request):
             if not Enrollment.objects.filter(student=request.user, course=course).exists():
                 Enrollment.objects.create(student=request.user, course=course)
 
-                return HttpResponse('Voce foi matriculado no curso')
-            return HttpResponse('Você ja esta matriculado neste curso')
+                return redirect("my_courses")
+            
+            messages.error(request, "Você já está matriculado neste curso.")
+            return redirect("join_course")
+        
         except Course.DoesNotExist:
-            return HttpResponse('Código errado ou curso não existente')    
+            messages.error(request, "O código está inválido ou o curso não existe.")
+            return redirect("join_course")    
         
     return redirect('join_course')
 
