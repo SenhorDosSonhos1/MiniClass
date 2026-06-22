@@ -7,6 +7,6 @@
     <h2>Lições: </h2>
 
     {% for lesson in lessons %}
-        <a href="#">{{lesson.order}}. {{lesson.title}}</a>
+        <a href="{% url 'lesson_detail' lesson.id %}">{{lesson.order}}. {{lesson.title}}</a>
     {% endfor %}
 {% endfor %}

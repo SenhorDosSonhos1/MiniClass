@@ -1,0 +1,18 @@
+
+{% for lesson in lessons %}
+    <h3>Curso: {{lesson.course.name}}</h3>
+    <h1>Lição: {{lesson.title}} </h1>
+
+    <p>{{lesson.content}}</p>
+
+    <small>Criado em: {{lesson.created_at}}</small>
+{% endfor %}
+<h2>Exercicios</h2>
+{% for exercise in exercises %}
+    <h3>Exercicio: {{exercise.title}}</h3>
+
+    <form action="">
+        {% csrf_token %}
+        <textarea name="content" id="" rows="4" cols="50" placeholder="Escreva sua resposta aqui..."></textarea>
+    </form>
+{% endfor %}

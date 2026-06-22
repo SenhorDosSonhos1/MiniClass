@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404
 from accounts.models import Profile
-from courses.models import Course, Enrollment, Lesson
+from courses.models import Course, Enrollment, Lesson, Exercise, Submission
 from django.contrib import messages
 
 # Create your views here.
@@ -18,6 +18,7 @@ def join_course(request):
 
             if not Enrollment.objects.filter(student=request.user, course=course).exists():
                 Enrollment.objects.create(student=request.user, course=course)
+                print("MATRICULA CRIADA")
 
                 return redirect("my_courses")
             
@@ -46,7 +47,7 @@ def my_courses(request):
 # E listar as lições do curso
 @login_required(login_url="user_login") 
 def my_courses_detail(request, course_id):
-    enrollment = Enrollment.objects.filter(course = course_id)
+    enrollment = Enrollment.objects.filter(student = course_id)
     try:
     # Verificar se o usuario logado for == ao usuario matriculado
         if Enrollment.objects.get(
@@ -62,5 +63,24 @@ def my_courses_detail(request, course_id):
             })
         
     except Enrollment.DoesNotExist:
+        print("Erro ao acessar o curso detail")
         return redirect("/gg/")
     
+@login_required(login_url="user_login")
+def lesson_detail(request, lesson_id):
+    if request.method == "GET":
+        try:
+            if Enrollment.objects.get(
+                student = request.user
+            ):
+                
+                lessons = Lesson.objects.filter(id = lesson_id)
+                exercises = Exercise.objects.filter(lesson = lesson_id)
+                return render(request, 'courses/lesson_detail.html', context = {
+                    "lessons": lessons,
+                    "exercises": exercises,
+                })
+            
+        except Enrollment.DoesNotExist:
+            print("Erro ao acessar o curso detail")
+            return redirect("/gg/")
