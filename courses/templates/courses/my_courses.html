@@ -1,3 +1,14 @@
+ <br>
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert {{message.tags}}">
+                    {{message}}
+                </div>
+            {% endfor %}}
+        {% endif %}
+    <br>
+    <br>
+    
 {% for course in courses %}
     <a href="{% url 'my_courses_detail' course.course.id %}">{{course}}</a>
 {% endfor %}

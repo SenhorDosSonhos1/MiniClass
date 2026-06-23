@@ -1,3 +1,14 @@
+ <br>
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert {{message.tags}}">
+                    {{message}}
+                </div>
+            {% endfor %}}
+        {% endif %}
+    <br>
+    <br>
+    
 {% for exercise in exercises %}
     <h3>Exercicio: {{exercise.title}}</h3>
     <p>{{exercise.question}}</p>

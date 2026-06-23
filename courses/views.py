@@ -84,30 +84,44 @@ def lesson_detail(request, lesson_id):
         except Enrollment.DoesNotExist:
             print("Erro ao acessar o curso detail")
             return redirect("/gg/")
-    
+
+@login_required(login_url="user_login")
 def exercise_detail(request, exercise_id):
     if request.method == "GET":
-        exercise = Exercise.objects.filter(id = exercise_id)
+        try:
+            global exercise
+            exercise = Exercise.objects.get(id = exercise_id)
+            if Enrollment.objects.get(student = request.user, course = exercise.lesson.course):
+                exercises = Exercise.objects.filter(id = exercise_id)
+        
+                return render(request, "courses/exercise_detail.html", context={
+                "exercises": exercises
+                })
 
-        return render(request, "courses/exercise_detail.html", context={
-        "exercises": exercise
-        })
+        except Enrollment.DoesNotExist:
+            messages.error(request, "Você não está matriculado no curso")
+            return redirect("my_courses") 
     
     content = request.POST.get("content")
 
     if content == "":
-        print("Probido campos vazios")
+        messages.warning(request, "Não e possivel enviar o formulario vazio")
+        return redirect("exercise_detail", exercise_id = exercise_id) 
     
     if not Submission.objects.filter(exercise = exercise_id, student = request.user).exists():
         try:
-            exercise = Exercise.objects.get(id = exercise_id)
-            submission = Submission.objects.create(exercise = exercise,
-                                                    student = request.user,
-                                                    content = content
-                                                    )
             
-            return HttpResponse("Resposta enviada com sucesso!")
+            submission = Submission.objects.create(exercise = exercise,
+                                                student = request.user,
+                                                content = content
+                                                )
+            
+            messages.success(request, "Resposta enviada com sucesso")
+            return redirect("my_courses") 
+        
         except Submission.DoesNotExist:
-            return HttpResponse("Erro ao enviar a resposta")
-
-    return HttpResponse("Voce já enviou uma resposta!")
+            messages.error(request, "Erro ao enviar a resposta")
+            return redirect("exercise_detail", exercise_id = exercise_id) 
+        
+    messages.warning(request, "Voce já enviou uma resposta!")
+    return redirect("exercise_detail", exercise_id = exercise_id) 

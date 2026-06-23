@@ -1,4 +1,14 @@
-
+ <br>
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert {{message.tags}}">
+                    {{message}}
+                </div>
+            {% endfor %}}
+        {% endif %}
+    <br>
+    <br>
+    
 {% for lesson in lessons %}
     <h3>Curso: {{lesson.course.name}}</h3>
     <h1>Lição: {{lesson.title}} </h1>
