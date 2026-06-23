@@ -84,3 +84,30 @@ def lesson_detail(request, lesson_id):
         except Enrollment.DoesNotExist:
             print("Erro ao acessar o curso detail")
             return redirect("/gg/")
+    
+def exercise_detail(request, exercise_id):
+    if request.method == "GET":
+        exercise = Exercise.objects.filter(id = exercise_id)
+
+        return render(request, "courses/exercise_detail.html", context={
+        "exercises": exercise
+        })
+    
+    content = request.POST.get("content")
+
+    if content == "":
+        print("Probido campos vazios")
+    
+    if not Submission.objects.filter(exercise = exercise_id, student = request.user).exists():
+        try:
+            exercise = Exercise.objects.get(id = exercise_id)
+            submission = Submission.objects.create(exercise = exercise,
+                                                    student = request.user,
+                                                    content = content
+                                                    )
+            
+            return HttpResponse("Resposta enviada com sucesso!")
+        except Submission.DoesNotExist:
+            return HttpResponse("Erro ao enviar a resposta")
+
+    return HttpResponse("Voce já enviou uma resposta!")

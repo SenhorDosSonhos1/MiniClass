@@ -1,0 +1,12 @@
+{% for exercise in exercises %}
+    <h3>Exercicio: {{exercise.title}}</h3>
+    <p>{{exercise.question}}</p>
+    <form action="{% url 'exercise_detail' exercise.id %}" method="POST">
+        {% csrf_token %}
+        <textarea name="content" id="" rows="4" cols="50" placeholder="Escreva sua resposta aqui..."></textarea>
+        <br>
+        <br>
+        
+        <button type="submit">Enviar resposta</button>
+    </form>
+{% endfor %}

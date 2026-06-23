@@ -44,6 +44,7 @@ class Lesson(models.Model):
     
 class Exercise(models.Model):
     title = models.CharField(max_length=255)
+    question = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     lesson = models.ForeignKey(Lesson, on_delete=models.CASCADE)
