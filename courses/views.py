@@ -101,27 +101,26 @@ def exercise_detail(request, exercise_id):
         except Enrollment.DoesNotExist:
             messages.error(request, "Você não está matriculado no curso")
             return redirect("my_courses") 
-    
-    content = request.POST.get("content")
+        
+    if request.method == "POST": 
+        content = request.POST.get("content")
 
-    if content == "":
-        messages.warning(request, "Não e possivel enviar o formulario vazio")
-        return redirect("exercise_detail", exercise_id = exercise_id) 
-    
-    if not Submission.objects.filter(exercise = exercise_id, student = request.user).exists():
-        try:
-            
+        if not content.strip() :
+            messages.warning(request, "Não e possivel enviar o formulario vazio")
+            return redirect("exercise_detail", exercise_id = exercise_id) 
+        
+        if len(content) < 5:
+            messages.warning(request, "Digite pelo menos 5 caracteres")
+            return redirect("exercise_detail", exercise_id = exercise_id) 
+        
+        if not Submission.objects.filter(exercise = exercise_id, student = request.user).exists():
             submission = Submission.objects.create(exercise = exercise,
                                                 student = request.user,
                                                 content = content
                                                 )
-            
+                
             messages.success(request, "Resposta enviada com sucesso")
             return redirect("my_courses") 
         
-        except Submission.DoesNotExist:
-            messages.error(request, "Erro ao enviar a resposta")
-            return redirect("exercise_detail", exercise_id = exercise_id) 
-        
-    messages.warning(request, "Voce já enviou uma resposta!")
-    return redirect("exercise_detail", exercise_id = exercise_id) 
+        messages.warning(request, "Voce já enviou uma resposta!")
+        return redirect("exercise_detail", exercise_id = exercise_id) 
