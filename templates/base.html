@@ -1,0 +1,47 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>
+        {% block title %}{% endblock %}
+    </title>
+
+    <!-- Bootstrap -->
+
+    <!-- CSS -->
+
+</head>
+
+<body>
+
+    {% include "includes/navbar.html" %}
+
+    <div class="container-fluid">
+
+        <div class="row">
+
+            {% include "includes/sidebar.html" %}
+
+            <main>
+
+                {% block content %}
+
+                {% endblock %}
+
+            </main>
+
+        </div>
+
+    </div>
+
+    <!-- Bootstrap JS -->
+
+</body>
+
+</html>
