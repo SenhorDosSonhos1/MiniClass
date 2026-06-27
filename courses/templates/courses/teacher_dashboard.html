@@ -1,3 +1,4 @@
+```django
 {% extends "base.html" %}
 
 {% block title %}
@@ -20,81 +21,160 @@ Dashboard | Professor
         Bem-vindo, Professor.
     </p>
 
+    <!-- Cards -->
     <div class="row g-4">
 
         <div class="col-md-6 col-lg-3">
-
             <div class="card shadow-sm border-0">
-
                 <div class="card-body">
 
-                    <h6 class="text-muted">
-                        Cursos
-                    </h6>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h6 class="text-muted mb-0">Cursos</h6>
+                        <i class="bi bi-book fs-2 text-primary"></i>
+                    </div>
 
-                    <h2 class="fw-bold">
-                        12
-                    </h2>
+                    <h2 class="fw-bold">12</h2>
 
                 </div>
-
             </div>
-
         </div>
 
         <div class="col-md-6 col-lg-3">
-
             <div class="card shadow-sm border-0">
-
                 <div class="card-body">
 
-                    <h6 class="text-muted">
-                        Alunos
-                    </h6>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h6 class="text-muted mb-0">Alunos</h6>
+                        <i class="bi bi-people fs-2 text-success"></i>
+                    </div>
 
-                    <h2 class="fw-bold">
-                        320
-                    </h2>
+                    <h2 class="fw-bold">320</h2>
 
                 </div>
-
             </div>
-
         </div>
 
         <div class="col-md-6 col-lg-3">
-
             <div class="card shadow-sm border-0">
-
                 <div class="card-body">
 
-                    <h6 class="text-muted">
-                        Lições
-                    </h6>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h6 class="text-muted mb-0">Lições</h6>
+                        <i class="bi bi-journal-text fs-2 text-warning"></i>
+                    </div>
 
-                    <h2 class="fw-bold">
-                        58
-                    </h2>
+                    <h2 class="fw-bold">58</h2>
 
                 </div>
-
             </div>
-
         </div>
 
         <div class="col-md-6 col-lg-3">
+            <div class="card shadow-sm border-0">
+                <div class="card-body">
+
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h6 class="text-muted mb-0">Exercícios</h6>
+                        <i class="bi bi-pencil-square fs-2 text-danger"></i>
+                    </div>
+
+                    <h2 class="fw-bold">84</h2>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Tabela -->
+    <div class="row mt-5">
+
+        <div class="col">
 
             <div class="card shadow-sm border-0">
 
+                <div class="card-header bg-white d-flex justify-content-between align-items-center">
+
+                    <h5 class="mb-0">
+                        Meus Cursos
+                    </h5>
+
+                    <button class="btn btn-primary btn-sm">
+                        <i class="bi bi-plus-circle"></i>
+                        Novo Curso
+                    </button>
+
+                </div>
+
                 <div class="card-body">
 
-                    <h6 class="text-muted">
-                        Exercícios
-                    </h6>
+                    <div class="table-responsive">
 
-                    <h2 class="fw-bold">
-                        84
-                    </h2>
+                        <table class="table table-hover align-middle">
+
+                            <thead>
+
+                                <tr>
+                                    <th>Curso</th>
+                                    <th>Alunos</th>
+                                    <th>Status</th>
+                                    <th>Ações</th>
+                                </tr>
+
+                            </thead>
+
+                            <tbody>
+
+                                <tr>
+                                    <td>Python para Iniciantes</td>
+                                    <td>30</td>
+                                    <td>
+                                        <span class="badge bg-success">
+                                            Ativo
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <button class="btn btn-warning btn-sm">
+                                            Editar
+                                        </button>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>Django Completo</td>
+                                    <td>18</td>
+                                    <td>
+                                        <span class="badge bg-success">
+                                            Ativo
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <button class="btn btn-warning btn-sm">
+                                            Editar
+                                        </button>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>Bootstrap 5</td>
+                                    <td>12</td>
+                                    <td>
+                                        <span class="badge bg-secondary">
+                                            Rascunho
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <button class="btn btn-warning btn-sm">
+                                            Editar
+                                        </button>
+                                    </td>
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
 
                 </div>
 
@@ -107,3 +187,4 @@ Dashboard | Professor
 </div>
 
 {% endblock %}
+
