@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}
+Editar Lição
+{% endblock %}
+
+{% block sidebar %}
+    {% include "courses/includes/teacher_sidebar.html" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid py-4">
+
+    <div class="mb-4">
+
+        <a href="#" class="btn btn-outline-secondary btn-sm mb-3">
+
+            <i class="bi bi-arrow-left me-2"></i>
+
+            Voltar
+
+        </a>
+
+        <h1 class="fw-bold">
+            Editar Lição
+        </h1>
+
+        <p class="text-secondary">
+            Atualize as informações da lição.
+        </p>
+
+    </div>
+
+    {% include "courses/teacher/lesson_form.html" with button_text="Salvar Alterações" button_class="btn-warning" %}
+
+</div>
+
+{% endblock %}

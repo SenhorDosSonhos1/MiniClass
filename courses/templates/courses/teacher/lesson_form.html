@@ -1,0 +1,83 @@
+<div class="card shadow-sm border-0">
+
+    <div class="card-body">
+
+        <form method="post">
+
+            {% csrf_token %}
+
+            <div class="mb-3">
+
+                <label class="form-label">
+
+                    Título
+
+                </label>
+
+                <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Ex.: Variáveis em Python">
+
+            </div>
+
+            <div class="mb-3">
+
+                <label class="form-label">
+
+                    Conteúdo
+
+                </label>
+
+                <textarea
+                    class="form-control"
+                    rows="10"
+                    placeholder="Digite o conteúdo da lição..."></textarea>
+
+            </div>
+
+            <div class="mb-4">
+
+                <label class="form-label">
+
+                    Ordem
+
+                </label>
+
+                <input
+                    type="number"
+                    class="form-control"
+                    value="1"
+                    min="1">
+
+                <div class="form-text">
+                    Define a posição desta lição dentro do curso.
+                </div>
+
+            </div>
+
+            <div class="d-flex justify-content-end">
+
+                <a href="#" class="btn btn-secondary me-2">
+
+                    Cancelar
+
+                </a>
+
+                <button
+                    type="submit"
+                    class="btn {{ button_class }}">
+
+                    <i class="bi bi-check-circle me-2"></i>
+
+                    {{ button_text }}
+
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
