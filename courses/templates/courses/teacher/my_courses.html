@@ -1,0 +1,177 @@
+{% extends "base.html" %}
+
+{% block title %}
+Meus Cursos
+{% endblock %}
+
+{% block sidebar %}
+    {% include "courses/includes/teacher_sidebar.html" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid py-4">
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+
+        <div>
+
+            <h1 class="fw-bold mb-1">
+                Meus Cursos
+            </h1>
+
+            <p class="text-secondary">
+                Gerencie todos os cursos criados.
+            </p>
+
+        </div>
+
+        <a href="#" class="btn btn-primary">
+
+            <i class="bi bi-plus-circle me-2"></i>
+
+            Novo Curso
+
+        </a>
+
+    </div>
+
+    <div class="card shadow-sm border-0">
+
+        <div class="card-body">
+
+            <div class="table-responsive">
+
+                <table class="table table-hover align-middle">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Curso</th>
+                            <th>Token</th>
+                            <th>Alunos</th>
+                            <th>Status</th>
+                            <th class="text-center">Ações</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+
+                            <td>Python para Iniciantes</td>
+
+                            <td>
+                                <code>ABC123</code>
+                            </td>
+
+                            <td>30</td>
+
+                            <td>
+                                <span class="badge bg-success">
+                                    Ativo
+                                </span>
+                            </td>
+
+                            <td class="text-center">
+
+                                <button class="btn btn-outline-primary btn-sm">
+                                    <i class="bi bi-eye"></i>
+                                </button>
+
+                                <button class="btn btn-outline-warning btn-sm">
+                                    <i class="bi bi-pencil"></i>
+                                </button>
+
+                                <button class="btn btn-outline-danger btn-sm">
+                                    <i class="bi bi-trash"></i>
+                                </button>
+
+                            </td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>Django Completo</td>
+
+                            <td>
+                                <code>XYZ789</code>
+                            </td>
+
+                            <td>18</td>
+
+                            <td>
+                                <span class="badge bg-success">
+                                    Ativo
+                                </span>
+                            </td>
+
+                            <td class="text-center">
+
+                                <button class="btn btn-outline-primary btn-sm">
+                                    <i class="bi bi-eye"></i>
+                                </button>
+
+                                <button class="btn btn-outline-warning btn-sm">
+                                    <i class="bi bi-pencil"></i>
+                                </button>
+
+                                <button class="btn btn-outline-danger btn-sm">
+                                    <i class="bi bi-trash"></i>
+                                </button>
+
+                            </td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>Bootstrap 5</td>
+
+                            <td>
+                                <code>LMN456</code>
+                            </td>
+
+                            <td>12</td>
+
+                            <td>
+                                <span class="badge bg-secondary">
+                                    Rascunho
+                                </span>
+                            </td>
+
+                            <td class="text-center">
+
+                                <button class="btn btn-outline-primary btn-sm">
+                                    <i class="bi bi-eye"></i>
+                                </button>
+
+                                <button class="btn btn-outline-warning btn-sm">
+                                    <i class="bi bi-pencil"></i>
+                                </button>
+
+                                <button class="btn btn-outline-danger btn-sm">
+                                    <i class="bi bi-trash"></i>
+                                </button>
+
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
