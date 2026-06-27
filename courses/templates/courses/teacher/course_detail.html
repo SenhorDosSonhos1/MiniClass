@@ -1,0 +1,225 @@
+{% extends "base.html" %}
+
+{% block title %}
+Detalhes do Curso
+{% endblock %}
+
+{% block sidebar %}
+    {% include "courses/includes/teacher_sidebar.html" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid py-4">
+
+    <a href="#" class="btn btn-outline-secondary btn-sm mb-4">
+
+        <i class="bi bi-arrow-left me-2"></i>
+
+        Voltar
+
+    </a>
+
+    <div class="card shadow-sm border-0 mb-4">
+
+        <div class="card-body">
+
+            <div class="d-flex justify-content-between align-items-start">
+
+                <div>
+
+                    <h2 class="fw-bold">
+                        Python para Iniciantes
+                    </h2>
+
+                    <p class="text-secondary mb-0">
+                        Curso completo para quem deseja aprender Python do zero.
+                    </p>
+
+                </div>
+
+                <a href="{% url 'course_update' %}" class="btn btn-warning">
+
+                    <i class="bi bi-pencil-square me-2"></i>
+
+                    Editar Curso
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="row g-4">
+
+        <div class="col-lg-4">
+
+            <div class="card shadow-sm border-0">
+
+                <div class="card-body">
+
+                    <h5 class="mb-3">
+                        Token de Acesso
+                    </h5>
+
+                    <div class="d-flex justify-content-between align-items-center">
+
+                        <code class="fs-5">
+                            ABC123
+                        </code>
+
+                        <button class="btn btn-outline-primary btn-sm">
+
+                            <i class="bi bi-copy"></i>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-lg-4">
+
+            <div class="card shadow-sm border-0">
+
+                <div class="card-body text-center">
+
+                    <h6 class="text-muted">
+                        Lições
+                    </h6>
+
+                    <h2 class="fw-bold">
+                        8
+                    </h2>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-lg-4">
+
+            <div class="card shadow-sm border-0">
+
+                <div class="card-body text-center">
+
+                    <h6 class="text-muted">
+                        Alunos
+                    </h6>
+
+                    <h2 class="fw-bold">
+                        30
+                    </h2>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="row mt-5">
+
+        <div class="col-lg-6">
+
+            <div class="card shadow-sm border-0">
+
+                <div class="card-header bg-white d-flex justify-content-between align-items-center">
+
+                    <h5 class="mb-0">
+
+                        Lições
+
+                    </h5>
+
+                    <button class="btn btn-primary btn-sm">
+
+                        <i class="bi bi-plus-circle me-2"></i>
+
+                        Nova Lição
+
+                    </button>
+
+                </div>
+
+                <div class="list-group list-group-flush">
+
+                    <a href="#" class="list-group-item list-group-item-action">
+
+                        Introdução
+
+                    </a>
+
+                    <a href="#" class="list-group-item list-group-item-action">
+
+                        Variáveis
+
+                    </a>
+
+                    <a href="#" class="list-group-item list-group-item-action">
+
+                        Estruturas Condicionais
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-lg-6">
+
+            <div class="card shadow-sm border-0">
+
+                <div class="card-header bg-white d-flex justify-content-between align-items-center">
+
+                    <h5 class="mb-0">
+
+                        Exercícios
+
+                    </h5>
+
+                    <button class="btn btn-primary btn-sm">
+
+                        <i class="bi bi-plus-circle me-2"></i>
+
+                        Novo Exercício
+
+                    </button>
+
+                </div>
+
+                <div class="list-group list-group-flush">
+
+                    <a href="#" class="list-group-item list-group-item-action">
+
+                        Exercício 01
+
+                    </a>
+
+                    <a href="#" class="list-group-item list-group-item-action">
+
+                        Exercício 02
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block title %}
-Novo Curso
+Editar Curso
 {% endblock %}
 
 {% block sidebar %}
@@ -23,18 +23,17 @@ Novo Curso
         </a>
 
         <h1 class="fw-bold">
-            Novo Curso
+            Editar Curso
         </h1>
 
         <p class="text-secondary">
-            Preencha as informações para criar um novo curso.
+            Atualize as informações do curso.
         </p>
 
     </div>
 
-    {% include "courses/teacher/course_form.html" with button_text="Criar Curso" button_class="btn-primary" %}
+    {% include "courses/teacher/course_form.html" with button_text="Salvar Alterações" button_class="btn-warning" %}
 
 </div>
 
 {% endblock %}
-
