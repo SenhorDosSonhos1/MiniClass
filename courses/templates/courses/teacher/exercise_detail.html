@@ -1,0 +1,228 @@
+{% extends "base.html" %}
+
+{% block title %}
+Detalhes do Exercício
+{% endblock %}
+
+{% block sidebar %}
+    {% include "courses/includes/teacher_sidebar.html" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid py-4">
+
+    <a href="#" class="btn btn-outline-secondary btn-sm mb-4">
+
+        <i class="bi bi-arrow-left me-2"></i>
+
+        Voltar para a Lição
+
+    </a>
+
+    <div class="card shadow-sm border-0 mb-4">
+
+        <div class="card-body">
+
+            <div class="d-flex justify-content-between align-items-start">
+
+                <div>
+
+                    <h2 class="fw-bold">
+                        Exercício 01
+                    </h2>
+
+                    <p class="text-secondary mb-0">
+                        Resolva os exercícios abaixo utilizando Python.
+                    </p>
+
+                </div>
+
+                <a href="#" class="btn btn-warning">
+
+                    <i class="bi bi-pencil-square me-2"></i>
+
+                    Editar Exercício
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="row g-4 mb-4">
+
+        <div class="col-md-6">
+
+            <div class="card shadow-sm border-0">
+
+                <div class="card-body text-center">
+
+                    <h6 class="text-muted">
+                        Pontuação
+                    </h6>
+
+                    <h2 class="fw-bold">
+                        10
+                    </h2>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-6">
+
+            <div class="card shadow-sm border-0">
+
+                <div class="card-body text-center">
+
+                    <h6 class="text-muted">
+                        Prazo
+                    </h6>
+
+                    <h5 class="fw-bold">
+                        30/07/2026
+                    </h5>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="card shadow-sm border-0 mb-4">
+
+        <div class="card-header bg-white">
+
+            <h5 class="mb-0">
+                Descrição
+            </h5>
+
+        </div>
+
+        <div class="card-body">
+
+            <p class="mb-0">
+
+                Desenvolva um algoritmo em Python que leia dois números,
+                realize as quatro operações matemáticas e exiba os resultados.
+
+            </p>
+
+        </div>
+
+    </div>
+
+    <div class="card shadow-sm border-0">
+
+        <div class="card-header bg-white d-flex justify-content-between align-items-center">
+
+            <h5 class="mb-0">
+
+                Submissions
+
+            </h5>
+
+            <a href="#" class="btn btn-primary btn-sm">
+
+                <i class="bi bi-eye me-2"></i>
+
+                Ver Todas
+
+            </a>
+
+        </div>
+
+        <div class="table-responsive">
+
+            <table class="table table-hover align-middle mb-0">
+
+                <thead>
+
+                    <tr>
+
+                        <th>Aluno</th>
+                        <th>Enviado em</th>
+                        <th>Status</th>
+                        <th class="text-center">Ações</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr>
+
+                        <td>Marcelo Costa</td>
+
+                        <td>29/06/2026</td>
+
+                        <td>
+
+                            <span class="badge bg-success">
+
+                                Entregue
+
+                            </span>
+
+                        </td>
+
+                        <td class="text-center">
+
+                            <a href="#" class="btn btn-outline-primary btn-sm">
+
+                                <i class="bi bi-eye"></i>
+
+                            </a>
+
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>João Silva</td>
+
+                        <td>28/06/2026</td>
+
+                        <td>
+
+                            <span class="badge bg-warning text-dark">
+
+                                Pendente
+
+                            </span>
+
+                        </td>
+
+                        <td class="text-center">
+
+                            <a href="#" class="btn btn-outline-primary btn-sm">
+
+                                <i class="bi bi-eye"></i>
+
+                            </a>
+
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+{% endblock %}
